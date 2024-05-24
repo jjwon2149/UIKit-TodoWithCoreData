@@ -54,17 +54,44 @@ class ViewController: UIViewController {
             self.saveData()
         }
         
+        action.isEnabled = false
+        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "새 할일을 여기에 적어주세요"
+            
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alertTextField, queue: OperationQueue.main) { _ in
+                if alertTextField.text?.isEmpty != true {
+                    action.isEnabled = true
+                } else {
+                    action.isEnabled = false
+                }
+            }
+            //TODO: - addTarget으로 변경 감지 왜안되나..?
+//            textField.addTarget(self, action: #selector(self.alertTextFieldDidChanged), for: .editingChanged)
+            
             textField = alertTextField
         }
         
         alert.addAction(action)
         
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
+    
+    @objc func alertTextFieldDidChanged(_ alertTextField: UITextField) {
+        if let alert = self.presentedViewController as? UIAlertController,
+           let action = alert.actions.first {
+            if let text = alertTextField.text, alertTextField.text?.isEmpty != true {
+                print(text)
+                action.isEnabled = true
+            } else {
+                action.isEnabled = false
+            }
+            
+        }
+    }
+
     
     //MARK: - CoreData Method
     func saveData() {
