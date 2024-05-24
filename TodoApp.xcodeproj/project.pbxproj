@@ -14,6 +14,7 @@
 		4A61DB6C2C00110000999D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A61DB6B2C00110000999D93 /* Assets.xcassets */; };
 		4A61DB6F2C00110000999D93 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4A61DB6E2C00110000999D93 /* Base */; };
 		4A61DB782C001F8400999D93 /* TodoCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A61DB762C001F8400999D93 /* TodoCoreDataModel.xcdatamodeld */; };
+		4A61DBA02C0020F300999D93 /* Todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A61DB9F2C0020F300999D93 /* Todos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4A61DB6E2C00110000999D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A61DB702C00110000999D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A61DB772C001F8400999D93 /* TodoCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		4A61DB9F2C0020F300999D93 /* Todos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				4A61DB622C00110000999D93 /* AppDelegate.swift */,
 				4A61DB642C00110000999D93 /* SceneDelegate.swift */,
 				4A61DB662C00110000999D93 /* ViewController.swift */,
+				4A61DB9F2C0020F300999D93 /* Todos.swift */,
 				4A61DB762C001F8400999D93 /* TodoCoreDataModel.xcdatamodeld */,
 				4A61DB682C00110000999D93 /* Main.storyboard */,
 				4A61DB6B2C00110000999D93 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				4A61DB782C001F8400999D93 /* TodoCoreDataModel.xcdatamodeld in Sources */,
 				4A61DB672C00110000999D93 /* ViewController.swift in Sources */,
 				4A61DB632C00110000999D93 /* AppDelegate.swift in Sources */,
+				4A61DBA02C0020F300999D93 /* Todos.swift in Sources */,
 				4A61DB652C00110000999D93 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

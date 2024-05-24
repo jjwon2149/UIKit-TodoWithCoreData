@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct Todos {
-    var todoTitle: String
-    var todoisChecked: Bool
-    
-}
-
 class ViewController: UIViewController {
     
     var todos = [Todos]()
