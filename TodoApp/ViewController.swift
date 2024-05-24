@@ -97,6 +97,18 @@ extension ViewController: UITableViewDelegate {
         todos[indexPath.row].todoisChecked.toggle()
         saveData()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let todoToRemove = todos[indexPath.row]
+            context.delete(todoToRemove)
+            todos.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            saveData()
+        }
+    }
 }
 
 //MARK: - TableView Datasource Method
