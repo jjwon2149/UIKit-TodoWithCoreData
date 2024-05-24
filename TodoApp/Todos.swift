@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Todos {
+class Todos {
     var todoTitle: String
     var todoisChecked: Bool
+    
+    init(todoTitle: String, todoisChecked: Bool) {
+        self.todoTitle = todoTitle
+        self.todoisChecked = todoisChecked
+    }
 }

@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
-    var todos = [Todos]()
+    var todos = [TodoModel]()
     var tableView = UITableView()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadData()
         self.title = "Todo"
         
         let rightBarButtonItem = UIBarButtonItem(title: "", image: UIImage(systemName: "plus"), target: self, action: #selector(rightBarButtonTapped))
@@ -40,11 +43,16 @@ class ViewController: UIViewController {
         
         let alert = UIAlertController(title: "새 할일", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "할일 추가", style: .default) { (action) in
-            let newTodo = Todos(todoTitle: textField.text!, todoisChecked: false)
+        let action = UIAlertAction(title: "할일 추가", style: .default) { action in
+            
+            
+            let newTodo = TodoModel(context: self.context)
+            newTodo.todoTitle = textField.text
+            newTodo.todoisChecked = false
+            
             self.todos.append(newTodo)
             print(self.todos)
-            self.tableView.reloadData()
+            self.saveData()
         }
         
         alert.addTextField { (alertTextField) in
@@ -54,17 +62,45 @@ class ViewController: UIViewController {
         
         alert.addAction(action)
         
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        
         present(alert, animated: true, completion: nil)
     }
+    
+    //MARK: - CoreData Method
+    func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func loadData(with request: NSFetchRequest<TodoModel> = TodoModel.fetchRequest()) {
+        
+        do {
+            todos = try context.fetch(request)
+        } catch {
+            print("Error loading Categories \(error)")
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
-
+//MARK: - TableView Delegate Method
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         todos[indexPath.row].todoisChecked.toggle()
-        tableView.reloadData()
+        saveData()
     }
 }
 
+//MARK: - TableView Datasource Method
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
