@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         do {
             todos = try context.fetch(request)
         } catch {
-            print("Error loading Categories \(error)")
+            print("Error: \(error)")
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
