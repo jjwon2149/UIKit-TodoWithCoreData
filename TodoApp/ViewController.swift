@@ -51,7 +51,6 @@ class ViewController: UIViewController {
             newTodo.todoisChecked = false
             
             self.todos.append(newTodo)
-            print(self.todos)
             self.saveData()
         }
         
