@@ -32,7 +32,7 @@
 ### 데이터 저장
 
 - 할 일 목록은 앱을 종료하고 다시 실행해도 유지됩니다.
-- UserDefaults를 사용하여 데이터를 로컬에 저장합니다.
+- CoreData를 사용하여 데이터를 로컬에 저장합니다.
 
 ### 기본 UI 디자인
 
@@ -61,5 +61,5 @@
 - UIKit
 - UITableView, UITableViewCell
 - UIButton, UITextField
-- UserDefaults
+- CoreData
 - Auto Layout
